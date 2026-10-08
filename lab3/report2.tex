@@ -1,0 +1,103 @@
+\documentclass{beamer}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{tikz}
+
+% \usepackage{mathpazo}      % шрифт Palatino + математика
+\usefonttheme{serif}       % beamer использует шрифт с засечками
+
+\usetheme{CambridgeUS}
+\usecolortheme{wolverine}
+
+\setbeamertemplate{caption}[numbered]
+
+% \usepackage{pgfpages}
+% \setbeameroption{show notes on second screen}
+
+\title[Математическое моделирование]{Математическая модель}
+\author[Гркикян М.Э.]{Гркикян Мисак Эдикович}
+\date{09.10.2026}
+
+% \setbeamertemplate{title page}{
+% 	\centering
+% 	\vskip1em
+% 	{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+% 	\vskip1em
+% 	{\usebeamerfont{author}\insertauthor\par}
+% }
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}{Модель расхода воды в душе}
+        \textbf{Этап 1. Формулировка предмодели.}
+        \begin{itemize}
+            \item Объект - процесс расхода воды в душе.
+            \item Цель - определить, сколько воды утекает за одно принятие душа.
+            \item Предположения: напор постоянный, утечек нет.
+        \end{itemize}
+
+        \medskip
+        \textbf{Этап 2. Завершение идеализации.}
+        \begin{itemize}
+            \item Пренебрегаем испарением, нагревом от среды, трением в трубах.
+            \item Математически:
+                $V_{\text{исп}} = 0$,\;
+                $p = \text{const}$,\;
+                $T_{\text{смеси}} = \text{const}$.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Модель расхода воды в душе}
+        \textbf{Этап 3. Выбор закона.}
+        \begin{itemize}
+            \item Объект подчиняется \textbf{закону сохранения массы}:
+        \end{itemize}
+        \[
+            V(0) + V_{\text{прих}} = V(t) + V_{\text{расх}}.
+        \]
+        \begin{itemize}
+            \item Дополнительно: расход пропорционален времени,
+        \end{itemize}
+        \[
+            V_{\text{расх}} = q_{\text{расх}} \cdot t.
+        \]
+
+        \medskip
+        \textbf{Этап 4. <<Оснащение>> модели.}
+        \begin{itemize}
+            \item $V(0) = 0$ л (бак пуст), $q_{\text{прих}} = 12$ л/мин (сколько воды приходит за минуту),
+                $q_{\text{расх}} = 12$ л/мин, $t = 10$ мин.
+            \item Цель - найти $V_{\text{расх}}$.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Модель расхода воды в душе}
+        \textbf{Этап 5. Исследование модели.}
+        \begin{itemize}
+            \item Вода идёт напрямую, бак не участвует:
+                $V(0) = 0$, $V(t) = 0$, значит
+                $V_{\text{прих}} = V_{\text{расх}}$.
+        \end{itemize}
+        \[
+            V_{\text{расх}} = q_{\text{расх}} \cdot t = 12 \cdot 10 = 120\ \text{л}.
+        \]
+        \begin{itemize}
+            \item Ответ: за 10 минут душа утекает 120 литров.
+        \end{itemize}
+
+        \medskip
+        \textbf{Этап 6. Проверка адекватности.}
+        \begin{itemize}
+            \item Типичный душ - 10-15 л/мин, значит 100-150 л за 10 минут,
+                результат правдоподобен.
+            \item Не противоречит закону сохранения массы.
+        \end{itemize}
+    \end{frame}
+
+\end{document}
